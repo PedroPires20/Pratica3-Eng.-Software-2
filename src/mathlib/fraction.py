@@ -20,7 +20,10 @@ class Fraction:
         if not regex_match:
             raise None
         numerator = int(regex_match.group(1))
-        denominator = int(regex_match.group(4))
+        if regex_match.group(4):
+            denominator = int(regex_match.group(4))
+        else:
+            denominator = 1
         return Fraction(numerator, denominator)
     
     # Retorna a fração inversa da atual
