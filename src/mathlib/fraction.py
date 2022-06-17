@@ -7,9 +7,10 @@ class Fraction:
     # Cria uma fração com os valores de numerador e denominador dados. Por
     # padrão, o valor 0 é utilizado
     def __init__(self, numerator = 0, denominator = 1):
-        self._numerator = numerator
-        self._denominator = denominator
+        self._numerator = abs(numerator)
+        self._denominator = abs(denominator)
         self._sign = sign(numerator) * sign(denominator)
+        self.__simplify()
     
     # Cria uma fração a partir de uma string no formato "a/b" ou "a", em que
     # a e b são inteiros
@@ -42,14 +43,9 @@ class Fraction:
     def to_float(self) -> float:
         return (self._numerator / self._denominator) * self._sign
     
-    # Retorna a forma simplificada (irredutível) da fração atual
-    def simplify(self) -> 'Fraction':
-        divisor = mdc(self._numerator, self._denominator)
-        return Fraction(self._numerator // divisor, self._denominator // divisor)
-    
     # Verifica se a fração atual representa um inteiro
     def is_integer(self) -> bool:
-        return  self.simplify()._denominator == 1
+        return  self._denominator == 1
     
     # Retorna a representação da fração atual como uma string. Se a fração
     # atual possui denominador 1, a representação do inteiro correspondente 
@@ -107,3 +103,9 @@ class Fraction:
     # Operador para verificar se a fração atual é maior ou igual que a fração dada
     def __gte__(self, f2: 'Fraction') -> bool:
         return (self > f2) or (self == f2)
+    
+    # Simplifica a fração atual
+    def __simplify(self) -> 'Fraction':
+        divisor = mdc(self._numerator, self._denominator)
+        self._numerator //= divisor
+        self._denominator //= divisor
