@@ -1,4 +1,7 @@
+import re
 from auxiliary import sign, mdc
+
+FRACTION_RPR_REGEX = r"((-)?\d+)(\/((-)?\d+))?"
 
 class Fraction:
     # Cria uma fração com os valores de numerador e denominador dados. Por
@@ -7,6 +10,17 @@ class Fraction:
         self._numerator = numerator
         self._denominator = denominator
         self._sign = sign(numerator) * sign(denominator)
+    
+    # Cria uma fração a partir de uma string no formato "a/b" ou "a", em que
+    # a e b são inteiros
+    @staticmethod
+    def from_string(str_rpr: str) -> 'Fraction':
+        regex_match = re.match(FRACTION_RPR_REGEX, str_rpr)
+        if not regex_match:
+            raise None
+        numerator = int(regex_match.group(1))
+        denominator = int(regex_match.group(4))
+        return Fraction(numerator, denominator)
     
     # Retorna a fração inversa da atual
     def inverse(self) -> 'Fraction':
