@@ -1,4 +1,4 @@
-from fraction import Fraction
+from mathlib.fraction import Fraction
 
 if __name__ == "__main__":
     print("Fraction calculator:")

@@ -1,5 +1,5 @@
 import re
-from auxiliary import sign, mdc
+from .auxiliary import sign, mdc
 
 FRACTION_RPR_REGEX = r"((-)?\d+)(\/((-)?\d+))?"
 

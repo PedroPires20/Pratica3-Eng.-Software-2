@@ -1,5 +1,5 @@
 from unittest import TestCase
-from src.auxiliary import sign, mdc
+from src.mathlib.auxiliary import sign, mdc
 
 class AuxiliaryTest(TestCase):
     def test_sign_negative(self):
