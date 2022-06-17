@@ -33,6 +33,18 @@ class Fraction:
         divisor = mdc(self._numerator, self._denominator)
         return Fraction(self._numerator // divisor, self._denominator // divisor)
     
+    # Verifica se a fração atual representa um inteiro
+    def is_integer(self) -> bool:
+        return  self.simplify()._denominator == 1
+    
+    # Retorna a representação da fração atual como uma string. Se a fração
+    # atual possui denominador 1, a representação do inteiro correspondente 
+    # é retornada
+    def __str__(self) -> str:
+        if self._denominator == 1:
+            return str(self._sign * self._numerator)
+        return f"{self._sign * self._numerator}/{self._denominator}"
+
     # Operador para calcular o oposto da fração atual
     def __neg__(self) -> 'Fraction':
         return Fraction(-self._numerator, self._denominator)
