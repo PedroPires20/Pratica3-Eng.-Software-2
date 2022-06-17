@@ -25,7 +25,7 @@ class Fraction:
     
     # Retorna a fração inversa da atual
     def inverse(self) -> 'Fraction':
-        return Fraction(self._denominator, self._numerator)
+        return Fraction(self._denominator * self._sign, self._numerator)
     
     # Retorna o valor do numerador da fração atual
     def numerator(self) -> int:
@@ -97,11 +97,11 @@ class Fraction:
         return self.to_float() > f2.to_float()
     
     # Operador para verificar se a fração atual é menor ou igual que a fração dada
-    def __lte__(self, f2: 'Fraction') -> bool:
+    def __le__(self, f2: 'Fraction') -> bool:
         return (self < f2) or (self == f2)
     
     # Operador para verificar se a fração atual é maior ou igual que a fração dada
-    def __gte__(self, f2: 'Fraction') -> bool:
+    def __ge__(self, f2: 'Fraction') -> bool:
         return (self > f2) or (self == f2)
     
     # Simplifica a fração atual
