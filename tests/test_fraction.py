@@ -131,3 +131,23 @@ class FractionTest(TestCase):
         self.assertTrue(f1 < f2)
         self.assertTrue(f1 <= f1)
         self.assertFalse(f2 < f1)
+
+    def test_fraction_parse(self):
+        f1 = Fraction.from_string("1/2")
+        f2 = Fraction.from_string("-10/3")
+        self.assertEqual(1, f1.sign())
+        self.assertEqual(1, f1.numerator())
+        self.assertEqual(2, f1.denominator())
+        self.assertEqual(-1, f2.sign())
+        self.assertEqual(10, f2.numerator())
+        self.assertEqual(3, f2.denominator())
+    
+    def test_integer_parse(self):
+        f1 = Fraction.from_string("20")
+        f2 = Fraction.from_string("-10")
+        self.assertEqual(1, f1.sign())
+        self.assertEqual(20, f1.numerator())
+        self.assertEqual(1, f1.denominator())
+        self.assertEqual(-1, f2.sign())
+        self.assertEqual(10, f2.numerator())
+        self.assertEqual(1, f2.denominator())
