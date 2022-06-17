@@ -4,9 +4,9 @@ def sign(a: int) -> int:
     return -1 if a < 0 else 1
 
 def mdc(a: int, b: int) -> int:
-    if a is not int:       
+    if not isinstance(a, int):       
         raise TypeError(f"Invalid type '{type(a)}' given for the MDC function!")
-    if b is not int:       
+    if not isinstance(b, int):       
         raise TypeError(f"Invalid type '{type(b)}' given for the MDC function!")
     a = abs(a)
     b = abs(b)
