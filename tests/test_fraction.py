@@ -44,7 +44,7 @@ class FractionTest(TestCase):
 
     def test_created_fractions_are_always_simplified(self):
         f1 = Fraction(10, 20)
-        f2 = Fraction(50, 4)
+        f2 = Fraction(50, 2)
         self.assertEqual(1, f1.sign())
         self.assertEqual(1, f1.numerator())
         self.assertEqual(2, f1.denominator())
@@ -60,4 +60,4 @@ class FractionTest(TestCase):
         self.assertEqual(2, f1.denominator())
         self.assertEqual(1, f2.sign())
         self.assertEqual(25, f2.numerator())
-        self.assertEqual(1, f2.denominator())
+        self.assertEqual(2, f2.denominator())
